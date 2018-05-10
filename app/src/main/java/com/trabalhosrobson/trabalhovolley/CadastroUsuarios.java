@@ -31,15 +31,16 @@ import java.util.Map;
 public class CadastroUsuarios extends AppCompatActivity {
 
     Button btnFotos;
+    // variavel constante
     private static int CODE_REQ = 0205;
     Bitmap photoBitmap;
     ImageView photoView;
 
     EditText nome,sobrenome,email;
-
+    // add requeste a fila
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
-
+    // link para a web service
     String HttpUrl = "https://sistemagte.xyz/android/trabRobson/cad.php";
 
     @Override

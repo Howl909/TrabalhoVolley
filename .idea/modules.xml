@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TrabalhoVolley.iml" filepath="$PROJECT_DIR$/TrabalhoVolley.iml" />
+      <module fileurl="file://D:\Users\Felipe\AndroidStudioProjects\SQLite\TrabalhoVolley\TrabalhoVolley.iml" filepath="D:\Users\Felipe\AndroidStudioProjects\SQLite\TrabalhoVolley\TrabalhoVolley.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Users\Felipe\AndroidStudioProjects\SQLite\TrabalhoVolley\app\app.iml" filepath="D:\Users\Felipe\AndroidStudioProjects\SQLite\TrabalhoVolley\app\app.iml" />
     </modules>
   </component>
 </project>

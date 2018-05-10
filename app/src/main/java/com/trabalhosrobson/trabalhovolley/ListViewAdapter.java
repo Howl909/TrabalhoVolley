@@ -33,7 +33,7 @@ import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
 
-
+    //lista de usuarios
     private List<UsuarioConst> userList;
     private List<UsuarioConst> orig;
     private Context mCtx;
@@ -57,10 +57,14 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
             protected FilterResults performFiltering(CharSequence constraint) {
                 final FilterResults oReturn = new FilterResults();
                 final ArrayList<UsuarioConst> results = new ArrayList<UsuarioConst>();
+                //verifica se a lista esta vazia
                 if (orig == null) {
+                    //retorna a lista ao orig
                     orig = userList;
                 }
+                //verifica se o usuario digitou algo
                 if (constraint != null) {
+                    //transforma para letra minuscula
                     constraint = constraint.toString().toLowerCase();
                     //verifica se temos algo na lista original
                     if (orig != null && orig.size() > 0) {
@@ -80,7 +84,7 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
                 }
                 return oReturn;
             }
-
+            // impedir o compilador de emitir algumas advertências
             @SuppressWarnings("unchecked")
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
@@ -104,7 +108,7 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
 
 
         UsuarioConst usuarioConst = userList.get(position);
-
+        //concatena nome e sobrenome
         txtNome.setText(usuarioConst.getNome() + " " +usuarioConst.getSobrenome());
         txtEmail.setText(usuarioConst.getEmail());
         String link = usuarioConst.getImg();
