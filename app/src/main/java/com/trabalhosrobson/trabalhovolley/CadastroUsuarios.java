@@ -75,9 +75,11 @@ public class CadastroUsuarios extends AppCompatActivity {
             Uri photoData = data.getData();
 
             try {
+                //transforma a img em formato bitmap
                 photoBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),photoData);
                 photoView.setImageBitmap(photoBitmap);
             } catch (IOException e) {
+                // mostra qual erro ocorreu
                 e.printStackTrace();
                 System.out.println(e.getMessage());
             }
@@ -85,8 +87,11 @@ public class CadastroUsuarios extends AppCompatActivity {
     }
 
     public void cadastrarImg(View view) {
+        // define uma mensagem para o progressDialog
         progressDialog.setMessage("Cadastrando");
+        // mostra a mensagem para o progressDialog
         progressDialog.show();
+        // o começo do stringRequest, para a interação com o php
         StringRequest stringRequest = new StringRequest(Request.Method.POST, HttpUrl,
                 new Response.Listener<String>() {
                     @Override
@@ -100,7 +105,7 @@ public class CadastroUsuarios extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-
+                        // retira o progressDialog
                         progressDialog.dismiss();
 
                         Toast.makeText(CadastroUsuarios.this, volleyError.toString(), Toast.LENGTH_LONG).show();
@@ -108,9 +113,9 @@ public class CadastroUsuarios extends AppCompatActivity {
                 }) {
             @Override
             protected Map<String, String> getParams() {
-
+                // um objeto que mapeia chaves para valor
                 Map<String, String> params = new HashMap<>();
-
+                // parametros que seram mandados para a webservice
                 params.put("nome", nome.getText().toString());
                 params.put("sobrenome", sobrenome.getText().toString());
                 params.put("email", email.getText().toString());
@@ -119,11 +124,11 @@ public class CadastroUsuarios extends AppCompatActivity {
                 return params;
             }
         };
-
+        //limpa o cache da queue
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest);
     }
-
+    // metodo que transforma bitmap(img) em string
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);//comprime em JPEG

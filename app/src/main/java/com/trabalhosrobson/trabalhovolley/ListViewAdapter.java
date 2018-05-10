@@ -66,13 +66,16 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
                     if (orig != null && orig.size() > 0) {
                         //para cada obj do UsuarioConst dentro lista
                         for (final UsuarioConst g : orig) {//Ocorerá para cada usuario que está na lista
+                            // faz a comparação do constraint que esta sendo digitado com todos os usuarios
                             if ((g.getNome().toLowerCase().contains(constraint.toString())) ||
                                     (g.getSobrenome().toLowerCase().contains(constraint.toString())) ||
                                     g.getEmail().toLowerCase().contains(constraint.toString())) {
+                                // resultado foi inserido a results
                                 results.add(g);
                             }
                         }
                     }
+                    // o valor do results foi inserido no oReturn
                     oReturn.values = results;
                 }
                 return oReturn;
@@ -119,7 +122,7 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
                 },
                 0, // Img width
                 0, // Img height
-                ImageView.ScaleType.CENTER_CROP,
+                ImageView.ScaleType.CENTER_CROP,//define o "corte" da img
                 Bitmap.Config.RGB_565, //configurações de decode
                 new Response.ErrorListener() { // Error listener
                     @Override
@@ -128,7 +131,7 @@ public class ListViewAdapter extends ArrayAdapter<UsuarioConst> {
                     }
                 }
         );
-
+        // add requeste a fila
         requestQueue.add(imageRequest);
 
         return listViewItem;
